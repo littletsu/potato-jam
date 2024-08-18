@@ -41,7 +41,7 @@ export default class PotatoNet {
 
     static init() {
         return new Promise<void>((res) => {
-            this.peer = new Peer(null, {debug: 3});
+            this.peer = new Peer(generateId(), {debug: 3});
             this.peer.on("open", (id) => {
                 this.id.value = id;
                 res();
