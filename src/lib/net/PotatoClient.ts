@@ -119,7 +119,7 @@ export default class PotatoClient {
     constructor(peer: Peer, serverId: PotatoPeerId) {
         this.peer = peer;
         this.serverId = serverId;
-        this.connection = peer.connect(serverId);
+        this.connection = peer.connect(serverId, {reliable: true});
         this.processing = new PotatoClientProcessing(serverId, peer.id, (t, d) => this.send(t,d))
         this.connection.on("open", () => this.processing.openConnection());
         this.connection.on("close", () => this.processing.closeConnection());
